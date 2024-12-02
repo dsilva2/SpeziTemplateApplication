@@ -41,6 +41,12 @@
         }
       }
     },
+    "Assistant" : {
+
+    },
+    "Chat" : {
+
+    },
     "Close" : {
       "localizations" : {
         "en" : {
@@ -231,6 +237,17 @@
         }
       }
     },
+    "LLM" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LLM Stuff"
+          }
+        }
+      }
+    },
     "Next" : {
       "localizations" : {
         "en" : {
@@ -330,6 +347,9 @@
           }
         }
       }
+    },
+    "SpeziChat" : {
+
     },
     "Start Questionnaire" : {
       "localizations" : {
