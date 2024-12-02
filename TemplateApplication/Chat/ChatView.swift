@@ -27,12 +27,10 @@ struct ChatTestView: View {
                     .foregroundColor(.blue)
                     
             }
-//            .padding()
             .frame(maxWidth: .infinity)
             .background(Color.gray.opacity(0.1))
             .padding(.bottom, 10)
-            ChatView($chat, exportFormat: .pdf)
-                .navigationTitle("SpeziChat")
+            ChatView($chat)
         }
     }
 }

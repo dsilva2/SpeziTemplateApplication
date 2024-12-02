@@ -44,7 +44,16 @@
     "Assistant" : {
 
     },
+    "Assistant Conversation" : {
+
+    },
+    "Assistant Message!" : {
+
+    },
     "Chat" : {
+
+    },
+    "Chats" : {
 
     },
     "Close" : {
@@ -347,9 +356,6 @@
           }
         }
       }
-    },
-    "SpeziChat" : {
-
     },
     "Start Questionnaire" : {
       "localizations" : {

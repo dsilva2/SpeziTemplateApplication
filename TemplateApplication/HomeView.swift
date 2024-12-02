@@ -35,7 +35,7 @@ struct HomeView: View {
             }
                 .customizationID("home.contacts")
             Tab("Chat", systemImage: "message", value: .chat) {
-                ChatTestView()
+                ChatListView()
             }
                 .customizationID("home.chat")
         }
