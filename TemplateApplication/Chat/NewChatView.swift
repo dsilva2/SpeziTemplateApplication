@@ -12,8 +12,11 @@ struct NewChatView: View {
     @State private var selectedContactName: String = ""
     @State private var message: String = ""
 
-    // TO DO: POPULATE FROM CONTACTS
-    let contacts = ["Drew"]
+    let contacts: [String] = speziContacts.map { contact in
+        let givenName = contact.name.givenName ?? ""
+        let familyName = contact.name.familyName ?? ""
+        return "\(givenName) \(familyName)"
+    }
 
     var body: some View {
         NavigationStack {
@@ -28,7 +31,6 @@ struct NewChatView: View {
 
                 Section(header: Text("Message")) {
                     TextField("Enter your message", text: $message)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
             }
             .navigationTitle("New Chat")
