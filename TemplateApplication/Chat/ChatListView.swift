@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ChatListView: View {
+    @State private var isNewChatPresented = false
+
     var body: some View {
         NavigationStack {
             List {
@@ -29,6 +31,24 @@ struct ChatListView: View {
                 }
             }
             .navigationTitle("Chats")
+            .overlay(
+                Button(action: {
+                    isNewChatPresented = true
+                }) {
+                    Image(systemName: "plus")
+                        .font(.system(size: 24))
+                        .foregroundColor(.white)
+                        .frame(width: 50, height: 50)
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                }
+                .padding(.trailing, 20)
+                .padding(.bottom, 20),
+                alignment: .bottomTrailing
+            )
+        }
+        .sheet(isPresented: $isNewChatPresented) {
+            NewChatView() // Pull up new chat screen
         }
     }
 }

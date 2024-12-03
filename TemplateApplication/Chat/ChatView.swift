@@ -25,6 +25,7 @@ struct ChatTestView: View {
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(.blue)
+                    .padding(.bottom, 10)
                     
             }
             .frame(maxWidth: .infinity)

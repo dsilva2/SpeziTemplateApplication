@@ -50,6 +50,9 @@
     "Assistant Message!" : {
 
     },
+    "Cancel" : {
+
+    },
     "Chat" : {
 
     },
@@ -95,6 +98,9 @@
           }
         }
       }
+    },
+    "Enter your message" : {
+
     },
     "Grant Access" : {
       "localizations" : {
@@ -257,6 +263,12 @@
         }
       }
     },
+    "Message" : {
+
+    },
+    "New Chat" : {
+
+    },
     "Next" : {
       "localizations" : {
         "en" : {
@@ -316,6 +328,12 @@
           }
         }
       }
+    },
+    "Select Contact" : {
+
+    },
+    "Send" : {
+
     },
     "Social Support Questionnaire" : {
       "localizations" : {
