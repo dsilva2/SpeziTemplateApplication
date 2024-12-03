@@ -56,4 +56,9 @@ class ChatModel: ObservableObject {
         )
         chats.append(newChat)
     }
+    func updateConversation(_ conversation: Conversation, with newMessage: Message) {
+        if let index = chats.firstIndex(where: { $0.id == conversation.id }) {
+            chats[index].messages.append(newMessage)
+        }
+    }
 }

@@ -9,15 +9,15 @@ import SpeziChat
 import SwiftUI
 
 struct ChatTestView: View {
-    let conversation: Conversation
+    @Binding var conversation: Conversation
     @State private var chat: Chat = [
     ]
-    init(conversation: Conversation) {
-            self.conversation = conversation
-            self._chat = State(initialValue: conversation.messages.map { message in
-                ChatEntity(role: message.sender == "Me" ? .user : .assistant, content: message.content)
-            })
-        }
+    init(conversation: Binding<Conversation>) {
+        self._conversation = conversation
+        self._chat = State(initialValue: conversation.wrappedValue.messages.map { message in
+            ChatEntity(role: message.sender == "Me" ? .user : .assistant, content: message.content)
+        })
+    }
 
 
     var body: some View {
@@ -38,6 +38,21 @@ struct ChatTestView: View {
             .padding(.bottom, 10)
 
             ChatView($chat)
+            .onChange(of: chat) { _, newChat in
+                handleNewMessage(newChat)
+            }
         }
+    }
+    private func handleNewMessage(_ newChat: Chat) {
+        guard let lastMessage = newChat.last, lastMessage.role == .user else { return }
+
+        // store new messages
+        let newMessage = Message(
+            chatId: UUID().uuidString,
+            sender: "Me",
+            recipient: conversation.messages.first?.recipient ?? "Unknown",
+            content: lastMessage.content
+        )
+        conversation.messages.append(newMessage)
     }
 }

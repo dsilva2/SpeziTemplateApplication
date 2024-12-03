@@ -13,8 +13,8 @@ struct ChatListView: View {
 
     var body: some View {
         NavigationStack {
-            List(chatModel.chats) { chat in
-                NavigationLink(destination: ChatTestView(conversation: chat)) {
+            List($chatModel.chats) { $chat in
+                NavigationLink(destination: ChatTestView(conversation: $chat)) {
                     VStack(alignment: .leading) {
                         Text(chat.messages.first?.recipient ?? "Unknown Contact")
                             .font(.headline)
