@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct ChatListView: View {
+    @StateObject private var chatModel = ChatModel()
     @State private var isNewChatPresented = false
 
     var body: some View {
         NavigationStack {
-            List {
-                NavigationLink(destination: ChatTestView()) {
-                    HStack {
-                        Image(systemName: "person.circle.fill")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(.blue)
-                        VStack(alignment: .leading) {
-                            Text("Assistant Conversation")
-                                .font(.headline)
-                            Text("Assistant Message!")
+            List(chatModel.chats) { chat in
+                NavigationLink(destination: ChatTestView(conversation: chat)) {
+                    VStack(alignment: .leading) {
+                        Text(chat.messages.first?.recipient ?? "Unknown Contact")
+                            .font(.headline)
+                        if let lastMessage = chat.messages.last {
+                            Text(lastMessage.content)
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
+                                .lineLimit(1)
                         }
                     }
                     .padding(.vertical, 5)
@@ -48,7 +46,7 @@ struct ChatListView: View {
             )
         }
         .sheet(isPresented: $isNewChatPresented) {
-            NewChatView() // Pull up new chat screen
+            NewChatView(chatModel: chatModel) // Pull up new chat screen
         }
     }
 }

@@ -11,6 +11,7 @@ struct NewChatView: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedContactName: String = ""
     @State private var message: String = ""
+    @ObservedObject var chatModel: ChatModel
 
     let contacts: [String] = speziContacts.map { contact in
         let givenName = contact.name.givenName ?? ""
@@ -42,8 +43,9 @@ struct NewChatView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Send") {
-                        dismiss()
-                    }
+                        chatModel.addChat(contactName: selectedContactName, initialMessage: message)
+                            dismiss()
+                            }
                     .disabled(selectedContactName.isEmpty || message.isEmpty) // Ensure contact is selected and message is not empty
                 }
             }
